@@ -1,0 +1,89 @@
+/* クイズのCSS */
+
+/*クイズのスタートボタン*/
+.quizstart{
+    position:fixed;
+    top:100px;
+    left:500px;
+    font-size:100px;
+}
+
+/*「問題」の文字の指定*/
+.theme{
+    position:fixed;
+    top:50px;
+    left:760px;
+    font-size:100px;
+}
+
+/*問題文の指定*/
+.question{
+    position:fixed;
+    top:200px;
+    left:620px;
+    height:auto;
+    width:100%;
+    font-size:60px;
+}
+
+/*解答ボタン*/
+.answerbuttonA{
+    position:fixed;
+    top:400px;
+    left:400px;
+    font-size:55px;
+}
+
+.answerbuttonB{
+    position:fixed;
+    top:500px;
+    left:400px;
+    font-size:55px;
+}
+
+.answerbuttonC{
+    position:fixed;
+    top:600px;
+    left:400px;
+    font-size:55px;
+}
+
+.answerbuttonD{
+    position:fixed;
+    top:700px;
+    left:400px;
+    font-size:55px;
+}
+
+/* ボタンの大きさ指定 */
+#answerbutton{
+    position:fixed;
+    left:480px;
+    width:1000px;
+    font-size:55px;
+}
+
+/*ボタンの中身を左に寄せる*/
+#buttonsentence{
+    display:flex;
+    justify-content:left;
+    align-content:center;
+    padding:5px;
+}
+
+/* 正解、不正解の文字の大きさを指定 */
+.bigT{
+    position:fixed;
+    top:50px;
+    left:760px;
+    font-size:200px;
+    color:rgb(232, 83, 42);
+}
+
+.bigF{
+    position:fixed;
+    top:50px;
+    left:760px;
+    font-size:200px;
+    color:rgb(60, 108, 220);
+}
