@@ -1,10 +1,14 @@
 import Sidebar from '@/components/sidebar';
+import {useRouter} from 'next/router';
 
 export default function Home(){
+
+    const router=useRouter();
+
     return(
         <div className="App">
             {/* サイドバー */}
-            <Sidebar name="home"/>
+            <Sidebar name="home" username={router.query.username}/>
 
             {/* アプリ名記載 */}
             <div></div>

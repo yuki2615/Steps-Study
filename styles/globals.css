@@ -109,8 +109,8 @@ a {
 /*全体*/
 .App{
   position:fixed;
-  top:10px;
-  bottom:10px;
+  top:0px;
+  bottom:0px;
   left:0px;
   right:0px;
   background-color:white;
@@ -122,14 +122,25 @@ a {
   box-sizing:border-box;
 }
 
+/* リストの点を消す */
+.liststyle_none{
+  list-style:none;
+}
+#liststyle_none{
+  list-style:none
+}
+
 /*サイドバーのcss 始*/
 .sideback{
   position:fixed;
-  top:10px;
-  bottom:10px;
+  top:0px;
+  bottom:0px;
   left:0px;
-  width:250px;
+  width:16vw;
   background-color:#5CAFC1;
+  border:solid;
+  border-color:#297A8C;
+  border-width:0.5px;
 }
 
 .sidelist{
@@ -164,4 +175,159 @@ a {
 
 .row #title{
   flex:70%;
+}
+
+.login_button{
+  position:fixed;
+  top:5vh;
+  left:85vw;
+  font-size:2vw;
+  padding-top:0.2vh;
+  padding-bottom:0.2vh;
+  padding-left:0.5vw;
+  padding-right:0.5vw;
+  color:white;
+  background-color:rgb(79, 79, 255);
+  border:solid;
+  border-radius:0.7vw;
+}
+
+/*ログインの文字*/
+#login_edit{
+  font-size:2.5vw;
+  padding-top:10vh;
+  padding-left:11vw;
+}
+
+/* 境界線 */
+#border_edit{
+  font-size:2.5vw;
+  padding-left:3.5vw;
+  padding-bottom:5vh;
+}
+
+/* 閉じるボタン */
+.close_button{
+  position:fixed;
+  top:8.4vh;
+  right:35vw;
+}
+
+/* 入力するところ */
+.login_input{
+  position:fixed;
+  top:7vh;
+  left:33.2vw;
+  right:33.2vw;
+  font-size:1.4vw;
+  background-color:white;
+  border:solid;
+  border-color:rgb(79, 79, 255);
+  border-width:0.8vw;
+}
+
+/* 入力するところの各設定 */
+.login_input_fontsize{
+  font-size:1.4vw;
+  background-color:white;
+  padding:0.3vw;
+  border:solid;
+  border-color:rgb(81, 80, 80);
+  border-width:0.13vw;
+  border-radius:0.2vw;
+}
+.button_frame_delete{
+  font-size:1.9vw;
+  background-color:white;
+  border:solid;
+  border-color:white;
+  cursor:pointer;
+}
+
+/* 注意の文字を赤文字にする */
+.attention{
+  color:rgb(236, 55, 55);
+}
+
+/* アカウントとパスワードを入力するところ */
+.account_password{
+  padding-left:2vw;
+  padding-bottom:3.5vh;
+}
+
+/* 確認ボタン,登録ボタン,押せないボタン */
+#cofirmation_buttton,#entry_button,#entry_button_no{
+  padding:0.2vw;
+  width:5.6vw;
+  cursor:pointer;
+}
+
+/* 確認ボタンの位置の調節 */
+#control_position_confirmation{
+  padding-left:11.8vw;
+}
+
+/* 入力してくださいの文字 */
+#please_input{
+  padding-left:2vw;
+  padding-bottom:0.75vh;
+}
+
+/* 初めての方はこちら！の文字 */
+#come_on{
+  padding-left:2vw;
+  padding-bottom:2vh;
+}
+/* アカウント登録ボタン */
+#entry_account{
+  cursor:pointer;
+}
+
+/* アカウント作成の文字 */
+#account_create{
+  font-size:2vw;
+  padding-top:10vh;
+  padding-left:9vw;
+}
+
+/* 登録ボタン押せないやつ */
+#entry_button_no{
+  color:gray;
+}
+
+/* 登録ボタンの位置の調節 */
+#control_position_entry{
+  padding-left:13.2vw;
+  padding-top:2vh;
+  padding-bottom:8vh;
+}
+
+/* ログイン完了！の文字 */
+#login_complete{
+  font-size:2vw;
+  padding-top:10vh;
+  padding-left:9vw;
+}
+
+/* このアカウント？のアカウント名 */
+.what_account{
+  font-size:2vw;
+  padding-left:2vw;
+}
+
+/* スタートボタン */
+.login_start{
+  font-size:2vw;
+  padding:0.2vw;
+  width:10vw;
+  cursor:pointer;
+  border:solid;
+  border-radius:6px;
+  border-width:0.1vw;
+}
+/* login_startの位置 */
+#control_position_loginstart{
+  padding-left:11vw;
+  padding-top:6vh;
+  padding-bottom:8vh;
 }

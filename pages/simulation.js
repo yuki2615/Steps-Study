@@ -1,10 +1,13 @@
 //避難訓練の画面
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Sidebar from '@/components/sidebar';
-import styles from '../styles/simulation.module.css';
+import styles from 'styles/simulation.module.css';
 import Simuscene from 'components/simuscene';
 
 export default function Simulation() {
+
+    const router=useRouter();
 
     //避難訓練中か否かを判別する
     const [play, setPlay] = useState('n');
@@ -20,7 +23,7 @@ export default function Simulation() {
     return (
         <div className="App">
             {/* サイドバーを表示する */}
-            <Sidebar name="simulation" />
+            <Sidebar name="simulation" username={router.query.username}/>
 
             {play == 'n' ?
                 //避難訓練待機画面

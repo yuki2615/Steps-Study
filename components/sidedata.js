@@ -1,9 +1,8 @@
 //material-uiを活用
 import HomeIcon from '@mui/icons-material/Home';
 import DirectionsRunOutlinedIcon from '@mui/icons-material/DirectionsRunOutlined';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+import BackpackIcon from '@mui/icons-material/Backpack';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import HelpIcon from '@mui/icons-material/Help';
 
 //サイドバーの中身を記述
@@ -22,7 +21,7 @@ export const Sidedata=[
     },
     {
         title:"バッグ",
-        icon:<LocalMallIcon />,
+        icon:<BackpackIcon />,
         link:"/bag",
         current:"bag"
     },
@@ -31,12 +30,6 @@ export const Sidedata=[
         icon:<QuestionAnswerIcon />,
         link:"/quiz",
         current:"quiz"
-    },
-    {
-        title:"お金",
-        icon:<MonetizationOnIcon />,
-        link:"/money",
-        current:"money"
     },
     {
         title:"使い方",

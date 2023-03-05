@@ -1,4 +1,4 @@
-//サイドバーを作る
+//サイドバー
 //css 125~169
 
 import { Sidedata } from 'components/sidedata';
@@ -8,9 +8,10 @@ export default function Sidebar(props){
     return(
         <div className="sideback">
             <ul className="sidelist">
+                <li>{props.username}</li>
                 {Sidedata.map((value,key)=>{
                     return(
-                        <Link href={value.link} 
+                        <Link href={{pathname:value.link,query:{username:props.username}}}
                         key={key}
                         >
                             <li 

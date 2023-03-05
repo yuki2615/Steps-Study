@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model family {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(30)
+  num      Int
+  password String @db.VarChar(30)
+}
+
+model contents {
+  contents_id Int     @id @default(autoincrement())
+  user_name   String  @db.VarChar(30)
+  bag_name    String? @default("新しいバッグ") @db.VarChar(20)
+  item_id     Int
+  detail      String? @db.Text
+  dead_line   Int?    @default(0)
+  num         Int?    @default(1)
+}
+
+model item {
+  item_table String @id @db.VarChar(20)
+  water      Int
+  food       Int
+  battery    Int
+  toilet     Int
+  whistle    Int
+  blanket    Int
+  shoes      Int
+  tape       Int
+  first_aid  Int
+  original   Int
+}
+
+model bag_management {
+  bag_id    Int    @id @default(autoincrement())
+  user      String @db.VarChar(30)
+  bags_name String @db.VarChar(20)
+}

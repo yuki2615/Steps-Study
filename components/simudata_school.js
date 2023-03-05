@@ -1,18 +1,24 @@
 export const Simudata_School=[
     {
-        now_situation:"",
-        choose1:"",
-        choose2:"",
-        answer:"",
-        commentary:"",
-        situation_img:""
+        now_situation:["揺れを感じました。","すべき行動は？ 「教室」"],
+        choose1:"さけぶ",
+        choose2:"机の下に隠れる",
+        answer:"机の下に隠れる",
+        commentary:[
+            "落下物や窓ガラスの破片から身を守るために、",
+            "窓から離れ机の下などに隠れましょう。",
+            "ドアが閉まっていたらドアをあけましょう。"
+        ],
     },
     {
-        now_situation:"",
-        choose1:"",
-        choose2:"",
-        answer:"",
-        commentary:"",
-        situation_img:""
+        now_situation:["揺れを感じました。","すべき行動は？ 「廊下」"],
+        choose1:"近くの教室に避難",
+        choose2:"窓ガラスをわる",
+        answer:"教室に移動",
+        commentary:[
+            "",
+            "窓から離れ机の下などに隠れましょう。",
+            "ドアが閉まっていたらドアをあけましょう。"
+        ],
     },
 ]

@@ -1,66 +1,166 @@
 /* クイズのCSS */
 
-/*クイズのスタートボタン*/
-.quizstart{
+/* 画面の大きさ */
+.quiz_app_first,.quiz_app_choose,.quiz_app_T,.quiz_app_F,.quiz_app_result{
     position:fixed;
-    top:100px;
-    left:500px;
-    font-size:100px;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+}
+
+.quiz_app_first{
+    background-color:rgb(244, 221, 178);
+}
+.quiz_app_choose{
+    background-color:rgb(232, 250, 229);
+}
+.quiz_app_T{
+    background-color:rgb(255, 243, 239);
+}
+.quiz_app_F{
+    background-color:rgb(243, 243, 250);
+}
+.quiz_app_result{
+    background-color:rgb(232, 250, 229);
+}
+
+/*クイズのスタートボタン*/
+.quizstart5,.quizstart10,.quizstart15{
+    position:fixed;
+    bottom:8vh;
+    width:20vw;
+    height:35vh;
+    display:grid;
+    grid-template-rows: 18vh 17vh;
+    place-items:center;
+    color:white;
+    border: solid;
+    border-width:0.1vw;
+    border-color:rgb(216, 215, 215);
+    border-radius:0.5vw;
+    cursor:pointer;
+}
+.quizstart5{
+    left:23vw;
+    background-color: rgb(225, 135, 71);
+}
+.quizstart10{
+    left:48vw;
+    background-color:rgb(173, 173, 55);
+}
+.quizstart15{
+    left:73vw;
+    background-color: rgb(107, 107, 254);
+}
+#quizstart_font{
+    font-size:3.8vw;
+}
+#quizstart_num{
+    font-size:4vw;
+}
+
+/* カンタン！の文字 */
+.simple_font{
+    position:fixed;
+    top:6vh;
+    left:20vw;
+    font-size:4vw;
+    font-style:oblique;
+    transform:rotate(-8deg);
+    color:rgb(56, 56, 56);
+}
+
+/* 防災クイズの文字 */
+.disaster_quiz{
+    position:fixed;
+    top:15vh;
+    left:33vw;
+}
+#Disaster_quiz{
+    color:rgb(179, 28, 28);
+    font-size:10vw;
+}
+#disaster_Quiz{
+    color:black;
+    font-size:9vw;   
 }
 
 /*「問題」の文字の指定*/
 .theme{
     position:fixed;
-    top:50px;
-    left:760px;
-    font-size:100px;
+    top:1.3vh;
+    left:21vw;
+    font-size:6vw;
+    color:rgb(246, 254, 244);
+    -webkit-text-stroke:0.1px green;
 }
 
 /*問題文の指定*/
 .question{
     position:fixed;
-    top:200px;
-    left:620px;
+    top:15vh;
+    left:23vw;
     height:auto;
     width:100%;
-    font-size:60px;
+    font-size:3.2vw;
+    color:rgb(246, 254, 244);
+    -webkit-text-stroke:0.1px green;
 }
 
 /*解答ボタン*/
 .answerbuttonA{
     position:fixed;
-    top:400px;
-    left:400px;
-    font-size:55px;
+    top:45vh;
+    left:23vw;
 }
 
 .answerbuttonB{
     position:fixed;
-    top:500px;
-    left:400px;
-    font-size:55px;
+    top:56vh;
+    left:23vw;
 }
 
 .answerbuttonC{
     position:fixed;
-    top:600px;
-    left:400px;
-    font-size:55px;
+    top:67vh;
+    left:23vw;
 }
 
 .answerbuttonD{
     position:fixed;
-    top:700px;
-    left:400px;
-    font-size:55px;
+    top:78vh;
+    left:23vw;
 }
 
-/* ボタンの大きさ指定 */
-#answerbutton{
+/* 選択ボタンの大きさ指定 */
+#answerA,#answerB,#answerC,#answerD{
     position:fixed;
-    left:480px;
-    width:1000px;
-    font-size:55px;
+    width:70vw;
+    font-size:3vw;
+    color:white;
+    border:solid;
+    border-width:0.1vw;
+    border-radius:3px;
+    cursor:pointer;
+}
+
+/*ボタンのバッググラウンド*/
+#answerA{
+    background-color:rgb(226, 99, 99);
+    border-color:rgb(221, 147, 147);
+}
+#answerB{
+    background-color:#ecb101;
+    border-color:#e3d685;
+}
+#answerC{
+    background-color:#5c6fad;
+    border-color:rgba(139, 139, 195, 0.892);
+}
+#answerD{
+    background-color:#357f31;
+    border-color:#aed8ac;
 }
 
 /*ボタンの中身を左に寄せる*/
@@ -68,22 +168,183 @@
     display:flex;
     justify-content:left;
     align-content:center;
-    padding:5px;
+    padding:10px;
+}
+
+/* 正解の時のbackground */
+#correct{
+    background-color:yellow;
+}
+/*不正解の時のbackground*/
+#incorrect{
+    background-color:red;
 }
 
 /* 正解、不正解の文字の大きさを指定 */
-.bigT{
+.bigT,.bigF{
     position:fixed;
-    top:50px;
-    left:760px;
-    font-size:200px;
-    color:rgb(232, 83, 42);
+    top:2vh;
+    left:42vw;
+    font-size:7vw;
+    text-decoration:underline;
 }
 
+/* bigTとbitFは正解不正解の色 */
+.bigT{
+    color:rgb(232, 83, 42);
+    text-decoration-color:rgb(232, 83, 42);
+}
 .bigF{
-    position:fixed;
-    top:50px;
-    left:760px;
-    font-size:200px;
     color:rgb(60, 108, 220);
+    text-decoration-color:rgb(60, 108, 220);
+}
+
+/* 次の問題へボタン */
+.nextquestion{
+    position:fixed;
+    bottom:15vh;
+    right:5vw;
+    width:20vw;
+    font-size:3vw;
+    cursor:pointer;
+}
+
+/* 中断するボタン */
+.break_button{
+    position:fixed;
+    bottom:5vh;
+    right:5vw;
+    width:20vw;
+    font-size:3vw;
+    cursor:pointer;
+}
+
+/* 中断の文字 */
+#break_font{
+    font-size:2.8vw;
+}
+
+/* 正誤表示の時解答 */
+.open_answer{
+    position:fixed;
+    top:29vh;
+    left:25vw;
+}
+
+/* 項目の大きさ */
+#item_font{
+    font-size:3vw;
+}
+
+/* 解答の色と大きさ */
+#answer_font{
+    color:rgb(182, 55, 55);
+    font-size:2vw;
+}
+
+/* 説明文の表示 */
+.explain{
+    position:fixed;
+    top:45vh;
+    left:25vw;
+}
+
+/* 説明文の大きさ */
+#explain_font{
+    font-size:2vw;
+}
+
+/* クラッカーかショックのイラストを表示 */
+.illustration_left{
+    position:fixed;
+    left:18vw;
+    top:1vh;
+}
+.illustration_right{
+    position:fixed;
+    right:2vw;
+    top:1vh;
+}
+
+/* 状況のイラスト表示 */
+.illustration_situation{
+    position:fixed;
+    bottom:1vh;
+    left:20vw;
+}
+
+/* 結果は・・・の文字 */
+.result_font{
+    position:fixed;
+    top:6vh;
+    left:20vw;
+    font-size:4vw;
+    color:white;
+}
+.result_top{
+    position:fixed;
+    top:0px;
+    left:16.1vw;
+    width:83.9vw;
+    height:18vh;
+    background-color:rgb(106, 168, 44)
+}
+
+/* 結果を表示 */
+.result_open{
+    position:fixed;
+    top:18vh;
+    left:25vw;
+}
+
+/* 正答数 */
+.result_truenum{
+    font-size:15vw;
+}
+
+/* 正答数、正答率の文字 */
+.result_truenum_item{
+    font-size:5vw;
+}
+
+/* 問題数 */
+.result_count{
+    font-size:7vw;
+}
+
+/* 正答率 */
+.result_percent{
+    font-size:10vw;
+}
+
+/* 数字の色 */
+#result_red{
+    color:rgb(226, 99, 99);
+}
+#result_blue{
+    color:rgb(60, 108, 220);
+}
+
+/* クイズを終了するボタン */
+.quiz_finish_button{
+    position:fixed;
+    bottom:6vh;
+    right:6vw;
+    font-size:3vw;
+    padding-left:0.5vw;
+    padding-right:0.5vw;
+    cursor:pointer;
+}
+
+/* 選ぶ画面の境界 */
+.choose_top{
+    position:fixed;
+    top:0px;
+    left:16vw;
+    width:84vw;
+    height:35vh;
+    background-color:rgb(106, 168, 44);
+    border:solid;
+    border-color:rgb(132, 181, 151);
+    border-width:1px;
 }

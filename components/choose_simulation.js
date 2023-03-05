@@ -63,8 +63,12 @@ export default function Choose_Simulation(props) {
         return (
             <div>
                 {/* 問題文表示 */}
-                <div>
-                    <p className={styles.now_situ}>{data[count]['now_situation']}</p>
+                <div className={styles.now_situ}>
+                    {data[count]['now_situation'].map((value)=>{
+                        <p>
+                            {value}
+                        </p>
+                    })}
                 </div>
 
                 {/* 選択ボタン表示 */}

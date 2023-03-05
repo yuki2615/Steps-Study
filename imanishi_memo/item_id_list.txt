@@ -1,0 +1,12 @@
+contents	意味	     item_id
+
+water	    水　　　　　　 1
+food	    食料	      2
+battery	    バッテリー　　 3
+toilet	    簡易トイレ　　 4
+whistle	    ホイッスル　　 5
+blanket	    防寒具　　　　 6
+shoes	    靴　　　　　   7
+tape	　　ガムテープ	   8
+first_aid	救急セット	   9
+original	オリジナル	   10
