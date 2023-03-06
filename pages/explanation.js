@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import styles from '../styles/explanation.module.css';
 import Sidebar from '@/components/sidebar';
+import Image from 'next/image';
 
 export default function Explanation() {
 
@@ -26,7 +27,13 @@ export default function Explanation() {
                             <p>役に立つ防災クイズを4択形式で出題！！</p>
                         </li>
                         <li>
-
+                            <p>まず問題数を指定</p>
+                            <Image
+                            src="/quiz_first.png"
+                            alt="quiz_first"
+                            width={100}
+                            height={60}
+                            />
                         </li>
                         </ul>
                     </li>

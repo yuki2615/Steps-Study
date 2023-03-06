@@ -213,8 +213,7 @@ export default function Quizscene(props) {
                         {/* 結果画面へ移動 */}
                         <div>
                             <button
-                                /* classNameに変更する cssの名前も変える */
-                                className={styles.nextquestion}
+                                className={true_false=='T'?styles.result_go_T:styles.result_go_F}
                                 onClick={Result}
                             >結果へ</button>
                         </div>

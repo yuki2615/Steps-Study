@@ -49,6 +49,9 @@ export default function Bag(props) {
     const [delete_item_K, setDeleteItem_K] = useState(-1);
     const [delete_item_I, setDeleteItem_I] = useState(-1);
 
+    //賞味期限一覧表の表示
+    const [deadline_all,setDeadLineAll]=useState('no');
+
     //bag_listに全てのバッグを登録
     useEffect(() => {
 
@@ -232,6 +235,16 @@ export default function Bag(props) {
 
     }
 
+    //賞味期限一覧表の表示
+    const DeadLineAll_Change=(e)=>{
+        if(deadline_all=='no'){
+            setDeadLineAll('yes');
+        }
+        else{
+            setDeadLineAll('no');
+        }
+    }
+
     return (
 
         <div className={styles.bag_app}>
@@ -262,7 +275,9 @@ export default function Bag(props) {
                                 ＿＿＿＿＿＿＿＿＿＿＿＿＿
                             </div>
                             <li className={styles.information_list}>
-                                <button className={styles.deadline_all_open}>
+                                <button
+                                onClick={DeadLineAll_Change}
+                                className={styles.deadline_all_open}>
                                     賞味期限一覧表
                                 </button>
                             </li>

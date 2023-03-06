@@ -404,3 +404,35 @@
     border-color:rgb(132, 181, 151);
     border-width:1px;
 }
+
+/* 結果へボタン */
+.result_go_T,.result_go_F{
+    position:fixed;
+    bottom:5vh;
+    right:5vw;
+    width:20vw;
+    font-size:3vw;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(255, 243, 239);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+}
+.result_go_T:hover{
+    cursor:pointer;
+    background-color:rgb(207, 195, 190);
+    color:rgb(218, 134, 69);
+}
+.result_go_F:hover{
+    cursor:pointer;
+    background-color:rgb(196, 196, 201);
+    color:rgb(58, 58, 208);
+}
+
+.result_go_T{
+    background-color:rgb(255, 243, 239);
+}
+.result_go_F{
+    background-color:rgb(243, 243, 250);
+}
