@@ -23,7 +23,7 @@ export default function Explanation() {
                             防災クイズ
                         </h2>
                         <li>
-                            <p>役に立つ防災クイズを4択形式で出題！</p>
+                            <p>役に立つ防災クイズを4択形式で出題！！</p>
                         </li>
                         <li>
 
