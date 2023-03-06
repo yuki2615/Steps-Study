@@ -131,7 +131,7 @@ export default function Bag(props) {
     const Success_Edit_Delete = (e) => {
         setSuccessEdit({ ...success_edit, 'delete': 'no' });
         setDeleteBag('');
-        setAllBag(props.bag_name);
+        setAllBag(props.mybag);
     }
 
     //アイテム追加or削除完了
