@@ -1,0 +1,29 @@
+/* アプリのホームのcss */
+
+.home_Steps_Study{
+    position:fixed;
+    top:5vh;
+    left:23vw;
+    font-family:adobe Hebrew;
+    color:rgb(69, 69, 211);
+}
+.home_title_S{
+    font-size:15vw;
+  }
+.home_title_noS{
+    font-size:10vw;
+}
+
+.welcom{
+    position:fixed;
+    top:35vh;
+    right:10vw;
+    font-size:3vw;
+}
+
+.home_border{
+    position:fixed;
+    top:55vh;
+    left:20vw;
+    font-size:2vw;
+}

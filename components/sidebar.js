@@ -8,7 +8,6 @@ export default function Sidebar(props){
     return(
         <div className="sideback">
             <ul className="sidelist">
-                <li>{props.username}</li>
                 {Sidedata.map((value,key)=>{
                     return(
                         <Link href={{pathname:value.link,query:{username:props.username}}}

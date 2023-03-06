@@ -170,7 +170,7 @@ export default function Quizscene(props) {
                     </div>
                 }
 
-                {/* 問題文と答えを表示 */}
+                {/* 答えを表示 */}
                 <div className={styles.open_answer}>
                     <p id={styles.item_font}>＜答え＞</p>
                     <p id={styles.answer_font}>{Quizdata[num]["true_answer"]}</p>
@@ -192,7 +192,7 @@ export default function Quizscene(props) {
                         {/* 次の問題へボタン */}
                         <div>
                             <button
-                                className={styles.nextquestion}
+                                className={true_false=='T' ?styles.nextquestion_T:styles.nextquestion_F}
                                 onClick={Nextquestion}
                             >次へ⇒</button>
                         </div>
@@ -200,11 +200,12 @@ export default function Quizscene(props) {
                         {/* クイズを中断 */}
                         <div>
                             <button
-                                className={styles.break_button}
+                                className={true_false=='T' ?styles.break_button_T:styles.break_button_F}
                                 onClick={Result}
                             >
-                                ✕
                                 <span id={styles.break_font}> 中断</span>
+                                ✕
+                                
                             </button>
                         </div>
                     </div> :

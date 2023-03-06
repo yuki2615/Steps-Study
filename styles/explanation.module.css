@@ -1,0 +1,17 @@
+/* 説明のところの画面 */
+
+.E_scene{
+    position:fixed;
+    top:0vh;
+    bottom:0vh;
+    left:16vw;
+    right:0vw;
+    background-color:rgb(215, 237, 215);
+}
+
+.all_background{
+    position:absolute;
+    top:0vh;
+    left:16vw;
+    background-color:rgb(215, 237, 215);
+}

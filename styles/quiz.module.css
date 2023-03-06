@@ -47,11 +47,11 @@
 }
 .quizstart10{
     left:48vw;
-    background-color:rgb(173, 173, 55);
+    background-color:rgb(184, 184, 39);
 }
 .quizstart15{
     left:73vw;
-    background-color: rgb(107, 107, 254);
+    background-color: rgb(81, 81, 195);
 }
 #quizstart_font{
     font-size:3.8vw;
@@ -200,23 +200,67 @@
 }
 
 /* 次の問題へボタン */
-.nextquestion{
+.nextquestion_T,.nextquestion_F{
     position:fixed;
     bottom:15vh;
     right:5vw;
     width:20vw;
     font-size:3vw;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(255, 243, 239);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+}
+.nextquestion_T:hover{
     cursor:pointer;
+    background-color:rgb(207, 195, 190);
+    color:rgb(218, 134, 69);
+}
+.nextquestion_F:hover{
+    cursor:pointer;
+    background-color:rgb(196, 196, 201);
+    color:rgb(58, 58, 208);
+}
+
+.nextquestion_T{
+    background-color:rgb(255, 243, 239);
+}
+.nextquestion_F{
+    background-color:rgb(243, 243, 250);
 }
 
 /* 中断するボタン */
-.break_button{
+.break_button_T,.break_button_F{
     position:fixed;
     bottom:5vh;
     right:5vw;
     width:20vw;
     font-size:3vw;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(255, 243, 239);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+}
+.break_button_T:hover{
     cursor:pointer;
+    background-color:rgb(207, 195, 190);
+    color:rgb(218, 134, 69);
+}
+.break_button_F:hover{
+    cursor:pointer;
+    background-color:rgb(196, 196, 201);
+    color:rgb(58, 58, 208);
+}
+
+.break_button_T{
+    background-color:rgb(255, 243, 239);
+}
+.break_button_F{
+    background-color:rgb(243, 243, 250);
 }
 
 /* 中断の文字 */
@@ -331,9 +375,21 @@
     bottom:6vh;
     right:6vw;
     font-size:3vw;
+    padding-top:0.1vh;
     padding-left:0.5vw;
     padding-right:0.5vw;
+    background-color:rgb(232, 250, 229);
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(232, 250, 229);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+}
+.quiz_finish_button:hover{
     cursor:pointer;
+    background-color:rgb(163, 176, 161);
+    color:rgb(46, 83, 46);
 }
 
 /* 選ぶ画面の境界 */

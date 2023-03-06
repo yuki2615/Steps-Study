@@ -1,36 +1,370 @@
 /* 避難訓練画面のcss */
 
-.startbutton{
+/*最初の画面*/
+
+/* 最初のボタン */
+.first_scene{
     position:fixed;
-    top:30px;
-    left:500px;
-    font-size:100px;
+    top:0vh;
+    bottom:0vh;
+    right:0vw;
+    left:16.1vw;
+    background-color:rgb(244, 221, 178);
+}
+
+/* 避難訓練の文字 */
+.simulation_title{
+    position:fixed;
+    top:10vh;
+    left:36vw;
+    font-size:10vw;
+    color:rgb(129, 21, 21);
+}
+
+/* それぞれのボタン */
+.choisebuttonH,.choisebuttonPa,.choisebuttonPu{
+    position:fixed;
+    top:65vh;
+    width:20vw;
+    height:30vh;
+    font-size:3vw;
+    color:white;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(92, 92, 91);
+    border-radius:0.5vw;
+}
+.choisebuttonH,.choisebuttonPa,.choisebuttonPu:hover{
+    cursor: pointer;
+}
+/* 自宅ボタン */
+.choisebuttonH{
+    position:fixed;
+    left:20vw;
+    background-color:rgb(62, 62, 148);
+}
+/* 学校ボタン */
+.choisebuttonPu{
+    position:fixed;
+    left:45vw;
+    background-color:rgb(126, 167, 39);
+}
+/* 外出先ボタン */
+.choisebuttonPa{
+    position:fixed;
+    left:70vw;
+    background-color:rgb(195, 121, 42);
+}
+
+/* 境界線 */
+.simulation_first_border{
+    position:fixed;
+    top:35vh;
+    left:19vw;
+    font-size:3vw;
+    color:rgb(129, 21, 21);
+}
+
+/* 状況選択の文字 */
+.situation_choose_font{
+    position:fixed;
+    top:50vh;
+    left:49vw;
+    font-size:3vw;
+}
+
+/*最初の画面おわり*/
+
+/* 解答画面 */
+
+.choose_scene_title{
+    position:fixed;
+    top:0vh;
+    left:16.1vw;
+    right:0vw;
+    height:35vh;
+    background-color:rgb(84, 133, 34);
+    color:white;
+}
+
+/* 背景 */
+.choose_scene_back{
+    position:fixed;
+    top:35vh;
+    left:16.1vw;
+    right:0vw;
+    bottom:0vh;
+    background-color:rgb(232, 250, 229);
+}
+
+/* 避難中の文字 */
+.evacuation_font{
+    position:relative;
+    top:2vh;
+    left:2vw;
+    font-size:4vw;
+}
+
+/* 問題文 */
+.now_situ{
+    position:relative;
+    top:5vh;
+    left:3.5vw;
+    font-size:2.5vw;
+}
+
+/* 選択ボタン */
+.button1,.button2{
+    font-size:4vw;
+    color:white;
+    width:70vw;
+    padding:0.2vw;
+    display:flex;
+    justify-content:left;
+    align-items:left;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(232, 250, 229);
+    border-radius:0.5vw;
+}
+.button1,.button2:hover{
+    cursor:pointer;
+}
+.button1{
+    position:fixed;
+    top:50vh;
+    left:20vw;
+    background-color:rgb(167, 43, 18);
+}
+.button2{
+    position:fixed;
+    top:70vh;
+    left:20vw;
+    background-color:rgb(24, 62, 143);
+}
+
+/* 解答画面終了 */
+
+/* 答えを表示画面 */
+
+.TF_scene_back{
+    position:fixed;
+    top:0vh;
+    bottom:0vh;
+    left:16.1vw;
+    right:0vw;
+}
+#TF_scene_back_T{
+    background-color:rgb(255, 243, 239);
+}
+#TF_scene_back_F{
+    background-color:rgb(243, 243, 250);
+}
+
+.TF_font{
+    position:fixed;
+    top:2vh;
+    left:42vw;
+    font-size:7vw;
+}
+#T_font{
+    color:rgb(232, 83, 42);
+    text-decoration:underline;
+    text-decoration-color:rgb(232, 83, 42);
+}
+#F_font{
+    color:rgb(60, 108, 220);
+    text-decoration:underline;
+    text-decoration-color:rgb(60, 108, 220);
+}
+
+/* クラッカーかショックのイラストを表示 */
+.illustration_left{
+    position:fixed;
+    left:18vw;
+    top:1vh;
+}
+.illustration_right{
+    position:fixed;
+    right:2vw;
+    top:1vh;
+}
+
+/* 正誤表示の時解答 */
+.open_answer{
+    position:fixed;
+    top:29vh;
+    left:25vw;
+}
+
+/* 項目の大きさ */
+#item_font{
+    font-size:3vw;
+}
+
+/* 解答の色と大きさ */
+#answer_font{
+    color:rgb(182, 55, 55);
+    font-size:2vw;
+}
+
+/* 説明文の表示 */
+.explain{
+    position:fixed;
+    top:45vh;
+    left:25vw;
+}
+
+/* 説明文の大きさ */
+#explain_font{
+    font-size:2vw;
+}
+
+/* 次の問題へボタン */
+.situation_next_T,.situation_next_F{
+    position:fixed;
+    bottom:5vh;
+    right:5vw;
+    width:20vw;
+    font-size:3vw;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(255, 243, 239);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+}
+.situation_next_T:hover{
+    cursor:pointer;
+    background-color:rgb(207, 195, 190);
+    color:rgb(218, 134, 69);
+}
+.situation_next_F:hover{
+    cursor:pointer;
+    background-color:rgb(196, 196, 201);
+    color:rgb(58, 58, 208);
+}
+.situation_next_T{
+    background-color:rgb(255, 243, 239);
+}
+.situation_next_F{
+    background-color:rgb(243, 243, 250);
+}
+
+.situation_complete_T,.situation_complete_F{
+    position:fixed;
+    bottom:5vh;
+    right:5vw;
+    width:20vw;
+    font-size:3vw;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(255, 243, 239);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+}
+.situation_complete_T:hover{
+    cursor:pointer;
+    background-color:rgb(207, 195, 190);
+    color:rgb(218, 134, 69);
+}
+.situation_complete_F:hover{
+    cursor:pointer;
+    background-color:rgb(196, 196, 201);
+    color:rgb(58, 58, 208);
+}
+.situation_complete_T{
+    background-color:rgb(255, 243, 239);
+}
+.situation_complete_F{
+    background-color:rgb(243, 243, 250);
+}
+
+/* 答えを表示画面　終了 */
+
+/* 最後の画面 */
+
+.last_scene_top{
+    position:fixed;
+    top:0vh;
+    left:16.1vw;
+    right:0vw;
+    height:20vh;
+    background-color:rgb(84, 133, 34);
+    color:white;
+}
+
+/* 避難完了の文字 */
+.evacuation_complete_font{
+    position:relative;
+    top:4vh;
+    left:3vw;
+    font-size:5vw;
+}
+
+/* 結果表示 */
+.last_main{
+    position:fixed;
+    top:20vh;
+    bottom:0vh;
+    left:16.1vw;
+    right:0vw;
+    background-color:rgb(232, 250, 229);
+}
+
+.result{
+    position:absolute;
+    top:10vh;
+    left:5vw;
+}
+
+.result_main{
+    position:relative;
+    left:10vw;
+}
+
+.result_font{
+    font-size:10vw;
+}
+#result_font_red{
+    color:rgb(226, 99, 99);
+}
+#result_font_blue{
+    color:rgb(60, 108, 220);
+}
+.result_font_other{
+    font-size:6vw;
+}
+
+.result_commentary{
+    position:absolute;
+    top:45vh;
+    left:5vw;
+    font-size:3vw;
 }
 
 .finishbutton{
     position:fixed;
-    top:30px;
-    left:500px;
-    font-size:100px;
+    bottom:5vh;
+    right:5vw;
+    width:20vw;
+    font-size:3vw;
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(255, 243, 239);
+    border-bottom-width:0.2vw;
+    border-bottom-color:black;
+    border-radius:0.3vw;
+    background-color:rgb(232, 250, 229);
+}
+.finishbutton:hover{
+    cursor:pointer;
+    background-color:rgb(154, 162, 136);
+    color:rgb(26, 90, 59);
 }
 
-.choisebuttonH{
-    position:fixed;
-    top:500px;
-    left:500px;
-}
-
-.choisebuttonPu{
-    position:fixed;
-    top:500px;
-    left:800px;
-}
-
-.choisebuttonPa{
-    position:fixed;
-    top:500px;
-    left:1000px;
-}
+/* 最後の画面終了 */
 
 .situation{
     position:fixed;
@@ -44,34 +378,4 @@
     top:800px;
     left:600px;
     font-size:50px;
-}
-
-.situation_next{
-    position:fixed;
-    top:800px;
-    left:600px;
-}
-
-.situation_complete{
-    position:fixed;
-    top:800px;
-    left:800px;
-}
-
-.button1{
-    position:fixed;
-    top:800px;
-    left:600px;
-}
-
-.button2{
-    position:fixed;
-    top:800px;
-    left:800px;
-}
-
-.now_situ{
-    position:fixed;
-    top:500px;
-    left:800px;
 }

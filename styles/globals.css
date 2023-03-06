@@ -122,6 +122,44 @@ a {
   box-sizing:border-box;
 }
 
+.Steps_Study{
+  position:fixed;
+  top:20vh;
+  left:12vw;
+  font-family:adobe Hebrew;
+  color:rgb(69, 69, 211);
+}
+.title_S{
+  font-size:20vw;
+}
+.title_noS{
+  font-size:15vw;
+}
+
+.catch_copy{
+  position:fixed;
+  top:13vh;
+  left:7vw;
+  font-size:2.5vw;
+}
+#catch_copy_color_red{
+  color:rgb(201, 58, 58);
+}
+
+#when_login_SS{
+  color:#38386b;
+}
+#when_login_background{
+  background-color:rgb(98, 94, 94);
+}
+
+.create_imanishiz{
+  position:fixed;
+  bottom:2vh;
+  right:3vw;
+  font-size:2vw;
+}
+
 /* リストの点を消す */
 .liststyle_none{
   list-style:none;
@@ -191,6 +229,9 @@ a {
   border:solid;
   border-radius:0.7vw;
 }
+.login_button:hover{
+  cursor:pointer;
+}
 
 /*ログインの文字*/
 #login_edit{
@@ -259,6 +300,16 @@ a {
 #cofirmation_buttton,#entry_button,#entry_button_no{
   padding:0.2vw;
   width:5.6vw;
+}
+
+#confirmation_button{
+  padding-left:0.5vw;
+  padding-right:0.5vw;
+}
+#confirmation_button:hover{
+  cursor:pointer;
+}
+#entry_button:hover{
   cursor:pointer;
 }
 
@@ -330,4 +381,74 @@ a {
   padding-left:11vw;
   padding-top:6vh;
   padding-bottom:8vh;
+}
+
+#eye{
+  position:relative;
+  top:0.2vh;
+}
+
+.entry_complete_font{
+  position:relative;
+  top:3vh;
+  left:2vw;
+  padding-top:1vh;
+  padding-bottom:2vh;
+  font-size:2vw;
+}
+.entry_myall{
+  padding-top:2vh;
+  padding-bottom:10vh;
+}
+.entry_that_watch{
+  position:relative;
+  top:3vh;
+  left:2vw;
+  padding-bottom:2vh;
+}
+#entry_value{
+  font-size:2.1vw;
+}
+
+.entry_next_button_padding{
+  padding-bottom:5vh;
+}
+
+.entry_next_button{
+  position:relative;
+  left:23vw;
+  font-size:2vw;
+  padding-left:0.3vw;
+  padding-right:0.3vw;
+}
+.entry_next_button:hover{
+  cursor:pointer;
+}
+
+.steps_study_first{
+  position:relative;
+  top:5vh;
+  left:8vw;
+  font-size:3vw;
+  color:rgb(69, 69, 211);
+  font-family:adobe Hebrew;
+  padding-bottom:10vh;
+}
+
+.use_thank{
+  position:relative;
+  left:3vw;
+}
+
+.first_start_button_position{
+  position:relative;
+  left:12vw;
+}
+.first_start_button{
+  font-size:1.5vw;
+  width:8vw;
+}
+.first_start_button_padding{
+  padding-top:10vh;
+  padding-bottom:5vh;
 }

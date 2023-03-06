@@ -12,6 +12,9 @@ export default function App(props) {
   //アプリが利用できるか
   const [start, setStart] = useState('no');
 
+  //ログインボタンが押されたか
+  const [login_click,setLoginClick]=useState('no');
+
   //注意書き アカウントorパスワードが間違っている
   const [mistake, setMistake] = useState('');
   //注意書きを変更 消す
@@ -100,7 +103,30 @@ export default function App(props) {
   }
 
   return (
-    <div className="App">
+    <div className="App" id={login_click=='no'?"":"when_login_background"}>
+
+      {/* アプリ名など */}
+      <div className="catch_copy">
+        楽しく防災を
+        <span id={login_click=='no'?"catch_copy_color_red":"when_login_SS"}>学ぶ</span>！
+        防災バッグの管理が
+        <span id={login_click=='no'?"catch_copy_color_red":"when_login_SS"}>らくらく</span>！
+      </div>
+
+      <div
+      className="Steps_Study"
+      id={login_click=='no'?"":"when_login_SS"}
+      >
+        <span className="title_S">S</span>
+        <span className="title_noS">teps-</span>
+        <span className="title_S">S</span>
+        <span className="title_noS">tudy</span>
+      </div>
+
+      <div className="create_imanishiz">
+        製作:イマニシズ
+      </div>
+      {/* ↑装飾完了 */}
 
       {/* ログイン機能 */}
       <div>
@@ -116,6 +142,8 @@ export default function App(props) {
               mistake_erase={MistakeErase}
               //登録
               entry={CanEntry}
+              //ログインされたら色を変える
+              set_login_click={setLoginClick}
             />
             :
             start == 'yes' ?
@@ -131,18 +159,18 @@ export default function App(props) {
                 <p className="what_account">{myaccount} さん</p>
                 {/* アプリのホームへ飛ばす */}
                 {/* myIDを値として渡し、遷移先で誰が入ってきているかをわかるようにする */}
-                
+
                 {/* 位置の調節 */}
                 <div id="control_position_loginstart">
 
-                <Link href={{
-                  pathname: "/home",
-                  query: {
-                    username: myaccount
-                  }
-                }}>
-                  <button className="login_start">スタート</button>
-                </Link>
+                  <Link href={{
+                    pathname: "/home",
+                    query: {
+                      username: myaccount
+                    }
+                  }}>
+                    <button className="login_start">スタート</button>
+                  </Link>
                 </div>
 
                 {/* 閉じるボタン */}
@@ -156,26 +184,41 @@ export default function App(props) {
               </div>
               :
               start == 'next' ?
-                <div>
-                  <p>登録完了しました！</p>
-                  <p>アカウント:{myaccount}</p>
-                  <p>パスワード:{mypassword}</p>
+                <div className="login_input">
+                  <p className="entry_complete_font">登録完了しました！</p>
+                  <div className="entry_myall">
+                    <p className="entry_that_watch">アカウント:
+                    <span id="entry_value">{myaccount}</span></p>
+                  <p className="entry_that_watch">パスワード:
+                  <span id="entry_value">{mypassword}</span></p>
+                  </div>
 
                   {/* ここでアカウントを登録する */}
-                  <button onClick={UserEntry}>次へ</button>
+                  <div className="entry_next_button_padding">
+                  <button onClick={UserEntry} className="entry_next_button">次へ</button>
+                  </div>
                 </div>
                 :
-                <div>
+                <div className="login_input">
+                  <div className="steps_study_first">
+                    Steps-Study
+                  </div>
+                  <div className="use_thank">
                   <p>{myaccount} さん</p>
                   <p>ご利用ありがとうございます！</p>
+                  </div>
+                  <div className="first_start_button_padding">
                   <Link href={{
                     pathname: "/home",
                     query: {
                       username: myaccount
                     }
-                  }}>
-                    <button>スタート</button>
+                  }}
+                  className="first_start_button_position"
+                  >
+                    <button className="first_start_button">スタート</button>
                   </Link>
+                  </div>
                 </div>
           }
         </div>

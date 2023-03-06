@@ -11,7 +11,6 @@ datasource db {
 model family {
   id       Int    @id @default(autoincrement())
   name     String @db.VarChar(30)
-  num      Int
   password String @db.VarChar(30)
 }
 

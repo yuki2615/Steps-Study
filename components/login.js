@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export default function Login(props) {
 
@@ -30,6 +32,13 @@ export default function Login(props) {
 
         //状態変換
         setLogin(login_change);
+        //色を変える
+        if(login_change=='login_no'){
+        props.set_login_click('no');
+        }
+        else{
+            props.set_login_click('yes');
+        }
     }
 
     //入力内容を変更する
@@ -126,7 +135,9 @@ export default function Login(props) {
                                             id="Password"
                                         />
                                         {/* パスワードを見れるようにするボタン */}
-                                        <button onClick={PassWatchChange} className="button_frame_delete">👁</button>
+                                        <button onClick={PassWatchChange} className="button_frame_delete" id="eye">
+                                            {pass_watch=='no'?<VisibilityIcon />:<VisibilityOffIcon />}
+                                        </button>
                                         {/* 間違っていた時の注意を記載 */}
                                         <div>
                                             {props.mistake == 'パスワードが間違っています！' ?
@@ -226,7 +237,9 @@ export default function Login(props) {
                                             id="Password"
                                         />
                                         {/* パスワードの可視化切り替え */}
-                                        <button onClick={PassWatchChange} className="button_frame_delete">👁</button>
+                                        <button onClick={PassWatchChange} className="button_frame_delete" id="eye">
+                                        {pass_watch=='no'?<VisibilityIcon />:<VisibilityOffIcon />}
+                                        </button>
 
                                         {/* パスワードの文字数指定 */}
                                         <p

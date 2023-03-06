@@ -6,11 +6,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/bag.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CreateIcon from '@mui/icons-material/Create';
-import EditIcon from '@mui/icons-material/Edit';
 import Sidebar from '@/components/sidebar';
 import Bag_contents from 'components/bag_contents';
+import {Contents_Png} from 'components/contents_png';
 
 export default function Bag(props) {
 
@@ -22,6 +22,11 @@ export default function Bag(props) {
 
     //バッグの中身表示するかどうかのリスト
     const [bag_list, setBagList] = useState([])
+
+    //バッグが開かれているか
+    const [bag_open, setBagOpen] = useState('no');
+    //何のコンテンツが開かれているか
+    const [contents_open,setContentsOpen]=useState(0);
 
     //新規バッグの内容入力
     const [create_bag, setCreateBag] = useState('no');
@@ -36,13 +41,13 @@ export default function Bag(props) {
     //バッグ編集(追加、削除)後
     const [success_edit, setSuccessEdit] = useState({ 'add': 'no', 'delete': 'no' });
     //アイテム編集後(追加、削除)後
-    const [success_item,setSuccessItem]=useState({'add':'no','delete':'no'});
-    
+    const [success_item, setSuccessItem] = useState({ 'add': 'no', 'delete': 'no' });
+
     //削除したバッグ
     const [delete_bag, setDeleteBag] = useState('');
     //削除したアイテム
-    const [delete_item_K,setDeleteItem_K]=useState(-1);
-    const [delete_item_I,setDeleteItem_I]=useState(-1);
+    const [delete_item_K, setDeleteItem_K] = useState(-1);
+    const [delete_item_I, setDeleteItem_I] = useState(-1);
 
     //bag_listに全てのバッグを登録
     useEffect(() => {
@@ -68,7 +73,7 @@ export default function Bag(props) {
         setEntryBag('no');
     }
 
-    
+
 
     //新規バッグ名入力された値に変更する
     const NewBagname_Change = (e) => {
@@ -122,12 +127,12 @@ export default function Bag(props) {
     }
 
     //アイテム追加or削除完了
-    const Success_Edit_Item=(which)=>{
-        if(which=='add'){
-        setSuccessItem({...success_item,'add':'no'});
+    const Success_Edit_Item = (which) => {
+        if (which == 'add') {
+            setSuccessItem({ ...success_item, 'add': 'no' });
         }
-        else{
-            setSuccessItem({...success_item,'delete':'no'});
+        else {
+            setSuccessItem({ ...success_item, 'delete': 'no' });
             setDeleteItem_K(1);
             setDeleteItem_I(-1);
         }
@@ -141,6 +146,15 @@ export default function Bag(props) {
         else {
             setBagList(bag_list.map((value, index) => (index == bag_number ? 'no' : value)))
         }
+
+        if (bag_open == 'no') {
+            setBagOpen('yes');
+        }
+        else {
+            setBagOpen('no');
+        }
+
+        setContentsOpen(0);
     }
 
     //bagを編集する
@@ -177,7 +191,7 @@ export default function Bag(props) {
     }
 
     //アイテムを追加・削除する
-    const Item_Add_Delete = (which, bagname, itemid, item_detail, item_deadline, item_num,key_number,index_number) => {
+    const Item_Add_Delete = (which, bagname, itemid, item_detail, item_deadline, item_num, key_number, index_number) => {
 
         fetch(
             '/api/item_add_delete',
@@ -201,16 +215,16 @@ export default function Bag(props) {
             .then((res) => {
                 return res.json();
             })
-            .then((json)=>{
-                
-                console.log(key_number,'a',index_number)
-                if(which=='add'){
-                setSuccessItem({...success_item,'add':'yes'});
+            .then((json) => {
+
+                console.log(key_number, 'a', index_number)
+                if (which == 'add') {
+                    setSuccessItem({ ...success_item, 'add': 'yes' });
                 }
-                else{
+                else {
                     console.log(itemid)
                     console.log(key_number)
-                    setSuccessItem({...success_item,'delete':'yes'});
+                    setSuccessItem({ ...success_item, 'delete': 'yes' });
                 }
                 setDeleteItem_K(key_number);
                 setDeleteItem_I(index_number);
@@ -233,7 +247,26 @@ export default function Bag(props) {
                 {/* 右サイド */}
                 <div className={styles.bag_side}>
                     <div>
-                        情報
+                        <ul
+                        className={styles.information_position}
+                        id="liststyle_none"
+                        >
+                            {/* タイトル */}
+                            <div
+                            className={styles.bag_information_title}
+                            >バッグ内情報
+                            </div>
+                            
+                            {/* 境界線 */}
+                            <div className={styles.information_title_border}>
+                                ＿＿＿＿＿＿＿＿＿＿＿＿＿
+                            </div>
+                            <li className={styles.information_list}>
+                                <button className={styles.deadline_all_open}>
+                                    賞味期限一覧表
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className={styles.bag_main_basic}>　</div>
@@ -245,113 +278,180 @@ export default function Bag(props) {
                 >
                     <li>
                         <div>
-                            <div className={styles.main_item}>
-                                バッグ一覧
-                                <span className={styles.new_bag_input}>
-                                        {create_bag == 'no' ?
-                                            <button
-                                            onClick={Create_Bag_Change}
-                                            className={styles.new_bag}
-                                            >
-                                                <CreateIcon />　新規バッグ作成
-                                            </button> :
-                                            success_edit['add'] == 'no' ?
-                                                <span className={styles.new_bag_input}>新規バッグ名
-                                                    <input type={"text"}
-                                                    value={new_bagname}
-                                                    onChange={NewBagname_Change}
-                                                    className={styles.new_bag_input}
-                                                    >
-
-                                                    </input>
-                                                    {/*登録できるか*/}
-                                                    {entry_bag == 'yes' ?
-                                                        <button onClick={() => { Bag_Edit('add', new_bagname) }}
-                                                        className={styles.new_bag_input}
-                                                        >追加</button> :
-                                                        <span></span>
-                                                    }
-                                                    {/* バッグを追加しない */}
-                                                    <button onClick={Create_Bag_Change} className={styles.new_bag_input}>✕ 閉じる</button>
-                                                    {/* 注意書きを書く */}
-                                                    <p className={styles.attention}>{bag_attention}</p>
-                                                </span> :
-                                                <Link href={{pathname:'/bag',query:{username:router.query.username}}}>
-                                                    <button onClick={Success_Edit_Add}
-                                                    className={styles.new_bag_input}
-                                                    >追加完了！</button>
-                                                    </Link>
-                                        }
-                                    </span>
-                            </div>
                             <ul /* バッグ一覧 */ className={styles.second_item_position}>
+
+                                {bag_open == 'no' ?
+                                    <div className={styles.main_item}>
+                                        バッグ一覧
+                                        <span className={styles.new_bag_input}>
+                                            {create_bag == 'no' ?
+                                                <button
+                                                    onClick={Create_Bag_Change}
+                                                    className={styles.new_bag}
+                                                    id={styles.new_bag_back}
+                                                >
+                                                    <CreateIcon />　新規バッグ作成
+                                                </button> :
+                                                success_edit['add'] == 'no' ?
+                                                    <span className={styles.new_bag_input}>新規バッグ名
+                                                        <input type={"text"}
+                                                            value={new_bagname}
+                                                            onChange={NewBagname_Change}
+                                                            className={styles.new_bag_input}
+                                                        >
+
+                                                        </input>
+                                                        {/*登録できるか*/}
+                                                        {entry_bag == 'yes' ?
+                                                            <button onClick={() => { Bag_Edit('add', new_bagname) }}
+                                                                className={styles.new_bag_input}
+                                                            >追加</button> :
+                                                            <span></span>
+                                                        }
+                                                        {/* バッグを追加しない */}
+                                                        <button onClick={Create_Bag_Change} className={styles.new_bag_input}>✕ 閉じる</button>
+                                                        {/* 注意書きを書く */}
+                                                        <p className={styles.attention}>{bag_attention}</p>
+                                                    </span> :
+                                                    <Link href={{ pathname: '/bag', query: { username: router.query.username } }}>
+                                                        <button onClick={Success_Edit_Add}
+                                                            className={styles.new_bag_input}
+                                                        >追加完了！</button>
+                                                    </Link>
+                                            }
+                                        </span>
+                                    </div> :
+                                    <div></div>
+                                }
 
                                 {props.bag_name.map((value, key) => {
                                     return (
                                         <li key={key} id="liststyle_none">
                                             {/* userのバッグ一覧 */}
+                                            {bag_list[key] == 'no' ?
 
-                                            {success_edit['delete'] == 'no' ?
-                                                <div>
 
-                                                    <div className={styles.second_item_font}>
-                                                        {/* バッグの絵 */}
-                                                    <Image
-                                                    src='/hijouyou_mochidashi_bag.png'
-                                                    alt='hijouyou_mochidashi_bag'
-                                                    width={70}
-                                                    height={70}
-                                                    className={styles.bag_illustration}
-                                                    />
-                                                        <span> {value}</span>
-                                                        <button onClick={() => { BagList_Change(key) }}>
-                                                            {bag_list[key] == 'no' ?
-                                                                <span>開く</span> :
-                                                                <span>✕</span>
-                                                            }
-                                                        </button>
-                                                        {/* 削除ボタン */}
-                                                        <button onClick={() => { Bag_Edit('delete', value) }}>
-                                                            <DeleteIcon />
-                                                        </button>
-                                                    </div>
-
+                                                bag_open == 'yes' ?
                                                     <div>
-                                                        {/* 中身を表示 */}
-                                                        {bag_list[key] == 'no' ?
-                                                            <div></div> :
-                                                            <Bag_contents
-                                                                //開かれているバッグ
-                                                                open_bag={value}
-                                                                //内容説明
-                                                                order={record_order}
-                                                                //バッグの中身
-                                                                bag={props.mybag[value]}
-                                                                //アイテムを追加・削除
-                                                                item_add_delete={Item_Add_Delete}
-                                                                //アイテム追加削除完了
-                                                                success_item={success_item}
-                                                                success_edit_item={Success_Edit_Item}
-                                                                //routerの値
-                                                                router_user={router.query.username}
-                                                                //削除したアイテム
-                                                                delete_item_number_key={delete_item_K}
-                                                                delete_item_number_index={delete_item_I}
+                                                        {/* 他のバッグが開かれているとき */}
+                                                    </div>
+                                                    :
+
+                                                    success_edit['delete'] == 'no' ?
+                                                        <div>
+
+                                                            <div className={styles.second_item_font}>
+                                                                {/* バッグの絵 */}
+                                                                <Image
+                                                                    src='/hijouyou_mochidashi_bag.png'
+                                                                    alt='hijouyou_mochidashi_bag'
+                                                                    width={70}
+                                                                    height={70}
+                                                                    className={styles.bag_illustration}
                                                                 />
+                                                                
+                                                                <button
+                                                                onClick={() => { BagList_Change(key) }}
+                                                                className={styles.bag_name_button}
+                                                                >
+                                                                    {value}
+                                                                </button>
+                                                                {/* 削除ボタン */}
+                                                                <button
+                                                                className={styles.bag_delete_button}
+                                                                onClick={() => { Bag_Edit('delete', value) }}
+                                                                >
+                                                                    <DeleteIcon />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        :
+                                                        delete_bag == value ?
+                                                            <div>
+
+                                                                <Link href={{ pathname: '/bag', query: { username: router.query.username } }}>
+                                                                    <button onClick={Success_Edit_Delete}
+                                                                        className={styles.delete_complete_button}
+                                                                    >削除しました</button>
+                                                                </Link>
+                                                            </div> :
+                                                            <div className={styles.second_item_font}>
+                                                                <Image
+                                                                    src='/hijouyou_mochidashi_bag.png'
+                                                                    alt='hijouyou_mochidashi_bag'
+                                                                    width={70}
+                                                                    height={70}
+                                                                    className={styles.bag_illustration}
+                                                                />
+                                                                {value}
+                                                            </div> :
+
+                                                <div>
+                                                    <div className={styles.main_item}>
+                                                        {/* 今開かれているバッグ名を表示 */}
+                                                        <button
+                                                        onClick={() => BagList_Change(key)}
+                                                        className={styles.other_place}
+                                                        >
+                                                            バッグ一覧
+                                                        </button>
+                                                        <KeyboardArrowRightIcon />
+                                                        <button
+                                                        className={contents_open==0?styles.now_place:styles.other_place}
+                                                        onClick={()=>{setContentsOpen(0)}}
+                                                        >
+                                                        <Image
+                                                        src='/hijouyou_mochidashi_bag.png'
+                                                        alt='hijouyou_mochidashi_bag_now'
+                                                        width={contents_open==0?70:40}
+                                                        height={contents_open==0?70:40}
+                                                        className={contents_open==0?styles.bag_illustration:styles.other_bag_place}
+                                                        />
+                                                        {value}
+                                                        </button>
+                                                        {contents_open==0?
+                                                        <span></span>:
+                                                        <span>
+                                                            <KeyboardArrowRightIcon />
+                                                            <span className={styles.now_place}>
+                                                            <Image
+                                                            src={Contents_Png[contents_open].contents_src}
+                                                            alt={Contents_Png[contents_open].contents_alt}
+                                                            width={Contents_Png[contents_open].contents_width}
+                                                            height={Contents_Png[contents_open].contents_height}
+                                                            className={styles.bag_illustration}
+                                                            />
+                                                            {record_order[contents_open]}
+                                                            </span>
+                                                        </span>
                                                         }
                                                     </div>
-                                                </div>
-                                                :
-                                                delete_bag == value ?
                                                     <div>
+                                                        {/* 中身を表示 */}
+                                                        <Bag_contents
+                                                            //開かれているバッグ
+                                                            open_bag={value}
+                                                            //内容説明
+                                                            order={record_order}
+                                                            //バッグの中身
+                                                            bag={props.mybag[value]}
+                                                            //アイテムを追加・削除
+                                                            item_add_delete={Item_Add_Delete}
+                                                            //アイテム追加削除完了
+                                                            success_item={success_item}
+                                                            success_edit_item={Success_Edit_Item}
+                                                            //routerの値
+                                                            router_user={router.query.username}
+                                                            //削除したアイテム
+                                                            delete_item_number_key={delete_item_K}
+                                                            delete_item_number_index={delete_item_I}
+                                                            //何のコンテンツが開かれているか
+                                                            contents_open={contents_open}
+                                                            set_contents_open={setContentsOpen}
+                                                        />
 
-                                                        <Link href={{ pathname: '/bag', query: { username: router.query.username } }}>
-                                                            <button onClick={Success_Edit_Delete}>削除しました</button>
-                                                        </Link>
-                                                    </div> :
-                                                    <div>
-                                                        {value}
                                                     </div>
+                                                </div>
                                             }
                                         </li>
                                     )
@@ -361,8 +461,6 @@ export default function Bag(props) {
                     </li>
                 </ul>
             </div>
-            {/* バッグの中身を出力 */}
-            { }
         </div>
     )
 }
@@ -394,15 +492,15 @@ export async function getServerSideProps(context) {
     const entry_item = ['0', '飲料水', '食料', 'モバイルバッテリー', '簡易トイレ', 'ホイッスル', '防寒具', '靴(スリッパ)', 'ガムテープ・軍手', '救急セット', '利用者オリジナル']
     //それぞれの登録回数
     //let entry_count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    let entry_count=[{}]
+    let entry_count = [{}]
 
     //bag_separationに項目を追加
     {
         users_bag_name.map((value, key) => {
             bag_separation.bag_memory[key] = value.bags_name
             bag_separation[value.bags_name] = []
-            entry_count[value.bags_name]=[]
-            entry_count[value.bags_name]=[0,0,0,0,0,0,0,0,0,0,0]
+            entry_count[value.bags_name] = []
+            entry_count[value.bags_name] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             //bag_separation[value.bags_name][key] = []
         })
     }
