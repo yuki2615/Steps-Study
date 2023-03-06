@@ -8,7 +8,7 @@ export const Contents_Png=[
     },
 
     {
-        /* 水など */
+        /* 水などなど */
         contents_src:'/drink_petbottle.png',
         contents_alt:'drink_petbottle',
         contents_width:50,
