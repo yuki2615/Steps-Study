@@ -124,14 +124,15 @@ export default function Bag(props) {
         //bag_listに登録
         setBagList([...bag_list, 'no'])
 
-        setAllBag(props.bag_name);
+        router.reload();
     }
 
     //バッグ削除完了
     const Success_Edit_Delete = (e) => {
         setSuccessEdit({ ...success_edit, 'delete': 'no' });
         setDeleteBag('');
-        setAllBag(props.mybag);
+        
+        router.reload();
     }
 
     //アイテム追加or削除完了
@@ -144,7 +145,8 @@ export default function Bag(props) {
             setDeleteItem_K(1);
             setDeleteItem_I(-1);
         }
-        setAllBag(props.mybag);
+        
+        router.reload();
     }
 
     //bag_listの内容を変更する
@@ -253,7 +255,7 @@ export default function Bag(props) {
 
     //バッグの内容を更新
     const Bag_Updata=(e)=>{
-        setAllBag(props.mybag);
+        router.reload();
     }
 
     return (
