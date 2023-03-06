@@ -146,7 +146,7 @@ export default function Bag(props) {
             setDeleteItem_I(-1);
         }
         
-        router.reload('/bag',{query:{username:router.query.username,now_bag:now_bag,now_contents:now_contents}});
+        router.push({pathname:'/bag',query:{username:router.query.username,now_bag:now_bag,now_contents:now_contents}});
     }
 
     //bag_listの内容を変更する
@@ -255,7 +255,7 @@ export default function Bag(props) {
 
     //バッグの内容を更新
     const Bag_Updata=(now_bag,now_contents)=>{
-        router.reload('/bag',{query:{username:router.query.username,now_bag:now_bag,now_contents:now_contents}});
+        router.push({pathname:'/bag',query:{username:router.query.username,now_bag:now_bag,now_contents:now_contents}});
     }
 
     return (
