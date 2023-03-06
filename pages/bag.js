@@ -124,7 +124,7 @@ export default function Bag(props) {
         //bag_listに登録
         setBagList([...bag_list, 'no'])
 
-        router.reload();
+        router.push({pathname:'/bag',query:{username:router.query.username}});
     }
 
     //バッグ削除完了
@@ -132,7 +132,7 @@ export default function Bag(props) {
         setSuccessEdit({ ...success_edit, 'delete': 'no' });
         setDeleteBag('');
         
-        router.reload();
+        router.push({pathname:'/bag',query:{username:router.query.username}});
     }
 
     //アイテム追加or削除完了
