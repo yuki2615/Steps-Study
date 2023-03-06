@@ -137,6 +137,8 @@ export default function Bag_contents(props) {
         setItemNum(1);
 
         props.success_edit_item('add');
+
+        props.bag_updata();
     }
 
     return (
@@ -215,11 +217,11 @@ export default function Bag_contents(props) {
                                                         <li key={index}>
                                                             {props.success_item.delete == 'yes' && props.delete_item_number_key == key_num && props.delete_item_number_index == index_num ?
                                                                 <div>
-                                                                    <Link href={{ pathname: '/bag', query: { username: props.router_user } }}>
+                                                                    
                                                                         <button onClick={() => {
                                                                             props.success_edit_item('delete');
                                                                         }}>削除完了</button>
-                                                                    </Link>
+                                                                    
                                                                 </div>
                                                                 :
                                                                 <div className={styles.display_goods}>
@@ -265,10 +267,10 @@ export default function Bag_contents(props) {
 
                                                         props.success_item.add == 'yes' ?
                                                             <div>
-                                                                <Link href={{ pathname: '/bag', query: { username: props.router_user } }}>
+                                                                
                                                                     <button onClick={() => { Complete_Add_Item(key) }}
                                                                     >追加完了！</button>
-                                                                </Link>
+                                                                
                                                             </div>
                                                             :
                                                             <div className={styles.add_goods_back}>

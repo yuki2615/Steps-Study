@@ -10,7 +10,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CreateIcon from '@mui/icons-material/Create';
 import Sidebar from '@/components/sidebar';
 import Bag_contents from 'components/bag_contents';
-import {Contents_Png} from 'components/contents_png';
+import { Contents_Png } from 'components/contents_png';
 
 export default function Bag(props) {
 
@@ -23,12 +23,12 @@ export default function Bag(props) {
     //バッグの中身表示するかどうかのリスト
     const [bag_list, setBagList] = useState([])
     //すべてのバッグ
-    const [allbag,setAllBag]=useState(props.bag_name)
+    const [allbag, setAllBag] = useState(props.bag_name)
 
     //バッグが開かれているか
     const [bag_open, setBagOpen] = useState('no');
     //何のコンテンツが開かれているか
-    const [contents_open,setContentsOpen]=useState(0);
+    const [contents_open, setContentsOpen] = useState(0);
 
     //新規バッグの内容入力
     const [create_bag, setCreateBag] = useState('no');
@@ -52,7 +52,7 @@ export default function Bag(props) {
     const [delete_item_I, setDeleteItem_I] = useState(-1);
 
     //賞味期限一覧表の表示
-    const [deadline_all,setDeadLineAll]=useState('no');
+    const [deadline_all, setDeadLineAll] = useState('no');
 
     //bag_listに全てのバッグを登録
     useEffect(() => {
@@ -124,14 +124,14 @@ export default function Bag(props) {
         //bag_listに登録
         setBagList([...bag_list, 'no'])
 
-        //setAllBag(props.bag_name);
-        //console.log(props.allbag)
+        setAllBag(props.bag_name);
     }
 
     //バッグ削除完了
     const Success_Edit_Delete = (e) => {
         setSuccessEdit({ ...success_edit, 'delete': 'no' });
         setDeleteBag('');
+        setAllBag(props.bag_name);
     }
 
     //アイテム追加or削除完了
@@ -144,6 +144,7 @@ export default function Bag(props) {
             setDeleteItem_K(1);
             setDeleteItem_I(-1);
         }
+        setAllBag(props.mybag);
     }
 
     //bag_listの内容を変更する
@@ -241,13 +242,18 @@ export default function Bag(props) {
     }
 
     //賞味期限一覧表の表示
-    const DeadLineAll_Change=(e)=>{
-        if(deadline_all=='no'){
+    const DeadLineAll_Change = (e) => {
+        if (deadline_all == 'no') {
             setDeadLineAll('yes');
         }
-        else{
+        else {
             setDeadLineAll('no');
         }
+    }
+
+    //バッグの内容を更新
+    const Bag_Updata=(e)=>{
+        setAllBag(props.mybag);
     }
 
     return (
@@ -266,23 +272,23 @@ export default function Bag(props) {
                 <div className={styles.bag_side}>
                     <div>
                         <ul
-                        className={styles.information_position}
-                        id="liststyle_none"
+                            className={styles.information_position}
+                            id="liststyle_none"
                         >
                             {/* タイトル */}
                             <div
-                            className={styles.bag_information_title}
+                                className={styles.bag_information_title}
                             >バッグ内情報
                             </div>
-                            
+
                             {/* 境界線 */}
                             <div className={styles.information_title_border}>
                                 ＿＿＿＿＿＿＿＿＿＿＿＿＿
                             </div>
                             <li className={styles.information_list}>
                                 <button
-                                onClick={DeadLineAll_Change}
-                                className={styles.deadline_all_open}>
+                                    onClick={DeadLineAll_Change}
+                                    className={styles.deadline_all_open}>
                                     賞味期限一覧表
                                 </button>
                             </li>
@@ -334,10 +340,10 @@ export default function Bag(props) {
                                                         <p className={styles.attention}>{bag_attention}</p>
                                                     </span> :
                                                     /*<Link href={{ pathname: '/bag', query: { username: router.query.username } }}>*/
-                                                        <button onClick={Success_Edit_Add}
-                                                            className={styles.new_bag_input}
-                                                        >追加完了！</button>
-                                                    /*</Link>*/
+                                                    <button onClick={Success_Edit_Add}
+                                                        className={styles.new_bag_input}
+                                                    >追加完了！</button>
+                                                /*</Link>*/
                                             }
                                         </span>
                                     </div> :
@@ -369,17 +375,17 @@ export default function Bag(props) {
                                                                     height={70}
                                                                     className={styles.bag_illustration}
                                                                 />
-                                                                
+
                                                                 <button
-                                                                onClick={() => { BagList_Change(key) }}
-                                                                className={styles.bag_name_button}
+                                                                    onClick={() => { BagList_Change(key) }}
+                                                                    className={styles.bag_name_button}
                                                                 >
                                                                     {value}
                                                                 </button>
                                                                 {/* 削除ボタン */}
                                                                 <button
-                                                                className={styles.bag_delete_button}
-                                                                onClick={() => { Bag_Edit('delete', value) }}
+                                                                    className={styles.bag_delete_button}
+                                                                    onClick={() => { Bag_Edit('delete', value) }}
                                                                 >
                                                                     <DeleteIcon />
                                                                 </button>
@@ -389,11 +395,11 @@ export default function Bag(props) {
                                                         delete_bag == value ?
                                                             <div>
 
-                                                                <Link href={{ pathname: '/bag', query: { username: router.query.username } }}>
-                                                                    <button onClick={Success_Edit_Delete}
-                                                                        className={styles.delete_complete_button}
-                                                                    >削除しました</button>
-                                                                </Link>
+
+                                                                <button onClick={Success_Edit_Delete}
+                                                                    className={styles.delete_complete_button}
+                                                                >削除しました</button>
+
                                                             </div> :
                                                             <div className={styles.second_item_font}>
                                                                 <Image
@@ -410,40 +416,40 @@ export default function Bag(props) {
                                                     <div className={styles.main_item}>
                                                         {/* 今開かれているバッグ名を表示 */}
                                                         <button
-                                                        onClick={() => BagList_Change(key)}
-                                                        className={styles.other_place}
+                                                            onClick={() => BagList_Change(key)}
+                                                            className={styles.other_place}
                                                         >
                                                             バッグ一覧
                                                         </button>
                                                         <KeyboardArrowRightIcon />
                                                         <button
-                                                        className={contents_open==0?styles.now_place:styles.other_place}
-                                                        onClick={()=>{setContentsOpen(0)}}
+                                                            className={contents_open == 0 ? styles.now_place : styles.other_place}
+                                                            onClick={() => { setContentsOpen(0) }}
                                                         >
-                                                        <Image
-                                                        src='/hijouyou_mochidashi_bag.png'
-                                                        alt='hijouyou_mochidashi_bag_now'
-                                                        width={contents_open==0?70:40}
-                                                        height={contents_open==0?70:40}
-                                                        className={contents_open==0?styles.bag_illustration:styles.other_bag_place}
-                                                        />
-                                                        {value}
-                                                        </button>
-                                                        {contents_open==0?
-                                                        <span></span>:
-                                                        <span>
-                                                            <KeyboardArrowRightIcon />
-                                                            <span className={styles.now_place}>
                                                             <Image
-                                                            src={Contents_Png[contents_open].contents_src}
-                                                            alt={Contents_Png[contents_open].contents_alt}
-                                                            width={Contents_Png[contents_open].contents_width}
-                                                            height={Contents_Png[contents_open].contents_height}
-                                                            className={styles.bag_illustration}
+                                                                src='/hijouyou_mochidashi_bag.png'
+                                                                alt='hijouyou_mochidashi_bag_now'
+                                                                width={contents_open == 0 ? 70 : 40}
+                                                                height={contents_open == 0 ? 70 : 40}
+                                                                className={contents_open == 0 ? styles.bag_illustration : styles.other_bag_place}
                                                             />
-                                                            {record_order[contents_open]}
+                                                            {value}
+                                                        </button>
+                                                        {contents_open == 0 ?
+                                                            <span></span> :
+                                                            <span>
+                                                                <KeyboardArrowRightIcon />
+                                                                <span className={styles.now_place}>
+                                                                    <Image
+                                                                        src={Contents_Png[contents_open].contents_src}
+                                                                        alt={Contents_Png[contents_open].contents_alt}
+                                                                        width={Contents_Png[contents_open].contents_width}
+                                                                        height={Contents_Png[contents_open].contents_height}
+                                                                        className={styles.bag_illustration}
+                                                                    />
+                                                                    {record_order[contents_open]}
+                                                                </span>
                                                             </span>
-                                                        </span>
                                                         }
                                                     </div>
                                                     <div>
@@ -468,6 +474,8 @@ export default function Bag(props) {
                                                             //何のコンテンツが開かれているか
                                                             contents_open={contents_open}
                                                             set_contents_open={setContentsOpen}
+                                                            //バッグの更新
+                                                            bag_updata={Bag_Updata}
                                                         />
 
                                                     </div>
