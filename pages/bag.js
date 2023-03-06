@@ -124,8 +124,8 @@ export default function Bag(props) {
         //bag_listに登録
         setBagList([...bag_list, 'no'])
 
-        setAllBag(props.bag_name);
-        console.log(props.allbag)
+        //setAllBag(props.bag_name);
+        //console.log(props.allbag)
     }
 
     //バッグ削除完了
