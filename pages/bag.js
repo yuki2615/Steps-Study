@@ -22,6 +22,8 @@ export default function Bag(props) {
 
     //バッグの中身表示するかどうかのリスト
     const [bag_list, setBagList] = useState([])
+    //すべてのバッグ
+    const [allbag,setAllBag]=useState(props.bag_name)
 
     //バッグが開かれているか
     const [bag_open, setBagOpen] = useState('no');
@@ -121,6 +123,9 @@ export default function Bag(props) {
 
         //bag_listに登録
         setBagList([...bag_list, 'no'])
+
+        setAllBag(props.bag_name);
+        console.log(props.allbag)
     }
 
     //バッグ削除完了
@@ -328,11 +333,11 @@ export default function Bag(props) {
                                                         {/* 注意書きを書く */}
                                                         <p className={styles.attention}>{bag_attention}</p>
                                                     </span> :
-                                                    <Link href={{ pathname: '/bag', query: { username: router.query.username } }}>
+                                                    /*<Link href={{ pathname: '/bag', query: { username: router.query.username } }}>*/
                                                         <button onClick={Success_Edit_Add}
                                                             className={styles.new_bag_input}
                                                         >追加完了！</button>
-                                                    </Link>
+                                                    /*</Link>*/
                                             }
                                         </span>
                                     </div> :
