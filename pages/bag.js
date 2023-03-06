@@ -136,7 +136,7 @@ export default function Bag(props) {
     }
 
     //アイテム追加or削除完了
-    const Success_Edit_Item = (which) => {
+    const Success_Edit_Item = (which,now_bag,now_contents) => {
         if (which == 'add') {
             setSuccessItem({ ...success_item, 'add': 'no' });
         }
@@ -146,7 +146,7 @@ export default function Bag(props) {
             setDeleteItem_I(-1);
         }
         
-        router.reload();
+        router.reload('/bag',{query:{username:router.query.username,now_bag:now_bag,now_contents:now_contents}});
     }
 
     //bag_listの内容を変更する
@@ -254,8 +254,8 @@ export default function Bag(props) {
     }
 
     //バッグの内容を更新
-    const Bag_Updata=(e)=>{
-        router.reload();
+    const Bag_Updata=(now_bag,now_contents)=>{
+        router.reload('/bag',{query:{username:router.query.username,now_bag:now_bag,now_contents:now_contents}});
     }
 
     return (

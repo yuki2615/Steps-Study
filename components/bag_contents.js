@@ -138,7 +138,7 @@ export default function Bag_contents(props) {
 
         props.success_edit_item('add');
 
-        props.bag_updata();
+        props.bag_updata(props.open_bag,props.contents_open);
     }
 
     return (
@@ -219,7 +219,7 @@ export default function Bag_contents(props) {
                                                                 <div>
                                                                     
                                                                         <button onClick={() => {
-                                                                            props.success_edit_item('delete');
+                                                                            props.success_edit_item('delete',props.open_bag,props.contents_open);
                                                                         }}>削除完了</button>
                                                                     
                                                                 </div>
