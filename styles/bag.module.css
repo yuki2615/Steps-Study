@@ -184,6 +184,8 @@
 }
 
 .delete_complete_button{
+    position:relative;
+    top:3vh;
     font-size:2.5vw;
     padding:0.2vw;
 }
@@ -454,6 +456,7 @@
     border-width:0.1vh;
     border-color:rgb(225, 235, 195);
     padding:0.3vw;
+    text-decoration:line-through;
 }
 .deadline_all_open:hover{
     cursor:pointer;
@@ -464,5 +467,20 @@
 /* 右のバッグ内情報を表示終了 */
 
 .add_button{
-    font-size:2vw;
+    position:relative;
+    top:5vh;
+    font-size:3vw;
+    color:rgb(134, 80, 23);
+    background-color:rgb(251, 219, 130);
+    border:solid;
+    border-width:0.1vh;
+    border-color:rgb(251, 219, 130);
+    border-bottom-width:0.2vw;
+    border-bottom-color:rgb(134, 80, 23);
+}
+.add_button:hover{
+    cursor:pointer;
+    background-color:rgb(134, 80, 23);
+    color:white;
+    text-decoration:underline;
 }
