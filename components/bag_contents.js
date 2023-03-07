@@ -365,6 +365,7 @@ export default function Bag_contents(props) {
                                                                                         'add', props.open_bag, key, input_detail, input_date, input_itemnum, -1, -1
                                                                                     )
                                                                                 }}
+                                                                                className={styles.add_button}
                                                                             >追加</button>
                                                                             :
                                                                             <span>
